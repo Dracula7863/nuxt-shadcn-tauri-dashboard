@@ -3,7 +3,6 @@ import {
   presetAttributify,
   presetIcons,
   presetTypography,
-  presetWebFonts,
   presetWind3,
   transformerDirectives,
   transformerVariantGroup,

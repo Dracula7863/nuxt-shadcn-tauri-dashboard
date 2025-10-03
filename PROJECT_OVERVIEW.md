@@ -7,7 +7,9 @@ This project is a **modern, cross-platform desktop dashboard application** that 
 ## 🌟 Why This Project?
 
 ### Problem Statement
+
 Modern desktop applications often face these challenges:
+
 - **Heavy bundle sizes** (Electron apps can be 100MB+)
 - **High memory usage** (separate Chromium instances)
 - **Security concerns** (full Node.js access)
@@ -15,6 +17,7 @@ Modern desktop applications often face these challenges:
 - **Complex native integrations**
 
 ### Solution: Tauri + Nuxt + shadcn-vue
+
 This project solves these issues by combining:
 
 1. **Tauri 2** - Lightweight Rust-based desktop framework
@@ -43,6 +46,7 @@ This project solves these issues by combining:
 ## 🏗️ Architecture
 
 ### Frontend (Nuxt 3)
+
 ```
 User Interface Layer
 ├── Pages (Auto-routed)
@@ -65,6 +69,7 @@ User Interface Layer
 ```
 
 ### Backend (Tauri/Rust)
+
 ```
 Native Layer
 ├── Tauri Core
@@ -79,6 +84,7 @@ Native Layer
 ```
 
 ### Communication Flow
+
 ```
 Vue Component → Tauri API → Rust Backend → OS APIs → Native Features
      ↓                                                       ↓
@@ -88,11 +94,13 @@ Vue Component → Tauri API → Rust Backend → OS APIs → Native Features
 ## 💡 Key Technical Decisions
 
 ### 1. **SSR: false in Nuxt**
+
 - Tauri requires static files, not server-rendered pages
 - Uses `nuxt generate` to create static output
 - Enables full client-side reactivity
 
 ### 2. **Component Auto-Import Configuration**
+
 ```typescript
 components: {
   dirs: [{
@@ -102,10 +110,12 @@ components: {
   }]
 }
 ```
+
 - Prevents shadcn-vue index.ts conflicts
 - Maintains nested component naming
 
 ### 3. **System Fonts over Web Fonts**
+
 ```typescript
 theme: {
   fontFamily: {
@@ -113,22 +123,26 @@ theme: {
   }
 }
 ```
+
 - Avoids network requests in desktop app
 - Instant font loading
 - Native OS appearance
 
 ### 4. **Dynamic Tauri Imports**
+
 ```typescript
 if ((window as any).__TAURI__) {
   const { getCurrentWindow } = await import('@tauri-apps/api/window')
   // Use Tauri APIs
 }
 ```
+
 - Maintains web compatibility
 - Avoids build errors in browser mode
 - Progressive enhancement pattern
 
 ### 5. **Tauri v2 API Patterns**
+
 ```typescript
 // Storage: Use load() not new Store()
 const store = await load('store.json')
@@ -136,6 +150,7 @@ const store = await load('store.json')
 // Window: Use setFullscreen(bool) not toggleFullscreen()
 await window.setFullscreen(true)
 ```
+
 - Breaking changes from v1
 - Private constructors require factory functions
 - More explicit, less magic
@@ -143,6 +158,7 @@ await window.setFullscreen(true)
 ## 🔐 Security Model
 
 ### Tauri Capabilities System
+
 ```json
 {
   "permissions": [
@@ -152,11 +168,13 @@ await window.setFullscreen(true)
   ]
 }
 ```
+
 - **Explicit allowlist** - Only granted APIs work
 - **No implicit permissions** - Secure by default
 - **Fine-grained control** - Per-API method permissions
 
 ### Security Advantages over Electron
+
 - ✅ No Node.js runtime in renderer (limited attack surface)
 - ✅ Rust backend (memory safe, no buffer overflows)
 - ✅ System webview (always updated by OS)
@@ -165,27 +183,33 @@ await window.setFullscreen(true)
 ## 📊 Features Breakdown
 
 ### 1. System Information Page
+
 **Purpose**: Display OS details
 **Technologies**: `@tauri-apps/plugin-os`
 **Data Shown**:
+
 - Platform (Windows/macOS/Linux)
 - Architecture (x64, ARM, etc.)
 - OS Version
 - Hostname
 
 ### 2. Storage Page
+
 **Purpose**: Persistent key-value storage
 **Technologies**: `@tauri-apps/plugin-store`
 **Features**:
+
 - CRUD operations (Create, Read, Update, Delete)
 - JSON-based storage
 - Automatic persistence
 - Table view with actions
 
 ### 3. File System Page
+
 **Purpose**: File read/write operations
 **Technologies**: `@tauri-apps/plugin-fs`, `@tauri-apps/plugin-dialog`
 **Features**:
+
 - Open files with native dialog
 - Read text file content
 - Edit in textarea
@@ -193,18 +217,22 @@ await window.setFullscreen(true)
 - Supported formats: .txt, .md, .json, .js, .ts, .vue
 
 ### 4. Notifications Page
+
 **Purpose**: System notification integration
 **Technologies**: `@tauri-apps/plugin-notification`
 **Features**:
+
 - Permission request flow
 - Pre-configured templates (Info, Success, Warning, Error)
 - Native OS notifications
 - Custom title and body
 
 ### 5. Interface Page
+
 **Purpose**: Window management
 **Technologies**: `@tauri-apps/api/window`
 **Features**:
+
 - Toggle fullscreen
 - Maximize/restore window
 - Minimize window
@@ -212,8 +240,10 @@ await window.setFullscreen(true)
 - Real-time window state
 
 ### 6. Header Fullscreen Toggle
+
 **Purpose**: Quick fullscreen access
 **Implementation**:
+
 - Only visible in Tauri mode
 - Dynamic icon (maximize/minimize)
 - State persistence
@@ -221,6 +251,7 @@ await window.setFullscreen(true)
 ## 🎨 UI/UX Design Philosophy
 
 ### Design Principles
+
 1. **Simplicity** - Clean, uncluttered interfaces
 2. **Consistency** - Unified design language via shadcn-vue
 3. **Accessibility** - Radix Vue primitives (ARIA, keyboard nav)
@@ -228,6 +259,7 @@ await window.setFullscreen(true)
 5. **Dark Mode** - Full theme customization support
 
 ### Component Hierarchy
+
 ```
 shadcn-vue Components (Primitive Layer)
     ↓
@@ -241,23 +273,27 @@ Layouts (Structure)
 ## 🚀 Performance Characteristics
 
 ### Bundle Size Comparison
-| Framework | Bundle Size | Memory Usage |
-|-----------|-------------|--------------|
-| Electron  | ~100-200MB  | ~150-300MB   |
-| **Tauri** | **~3-10MB** | **~50-100MB**|
-| Web App   | ~2MB        | ~50MB        |
+
+| Framework | Bundle Size | Memory Usage  |
+| --------- | ----------- | ------------- |
+| Electron  | ~100-200MB  | ~150-300MB    |
+| **Tauri** | **~3-10MB** | **~50-100MB** |
+| Web App   | ~2MB        | ~50MB         |
 
 ### Startup Time
+
 - **Tauri**: ~1-2 seconds (uses system webview)
 - Electron: ~3-5 seconds (loads Chromium)
 
 ### Update Size
+
 - **Tauri**: ~3-10MB (app only)
 - Electron: ~50-100MB (includes runtime)
 
 ## 🛣️ Future Enhancements
 
 ### Planned Features
+
 1. **System Tray** - Background app with tray icon
 2. **Auto-Updates** - Built-in updater with delta updates
 3. **Database Integration** - SQLite via Tauri plugin
@@ -268,6 +304,7 @@ Layouts (Structure)
 8. **HTTP Client** - Built-in HTTP requests (bypasses CORS)
 
 ### Potential Use Cases
+
 - **Developer Tools** - API clients, log viewers
 - **Admin Dashboards** - System monitoring, analytics
 - **Content Management** - Note-taking, markdown editors
@@ -277,6 +314,7 @@ Layouts (Structure)
 ## 🎓 Learning Outcomes
 
 ### Skills Demonstrated
+
 1. **Full-Stack Development**
    - Frontend: Vue 3 Composition API, TypeScript
    - Backend: Rust, async programming
@@ -302,12 +340,14 @@ Layouts (Structure)
 ## 🤝 Community & Ecosystem
 
 ### Technologies Used
+
 - **Nuxt 3**: 50k+ GitHub stars
 - **Tauri**: 75k+ GitHub stars
 - **shadcn-vue**: Growing ecosystem
 - **UnoCSS**: 15k+ GitHub stars
 
 ### Open Source Benefits
+
 - MIT License - Free for commercial use
 - Active communities
 - Regular updates
@@ -316,12 +356,14 @@ Layouts (Structure)
 ## 📈 Project Impact
 
 ### Why This Matters
+
 1. **Education** - Reference for Tauri + Nuxt integration
 2. **Productivity** - Starter template for new projects
 3. **Innovation** - Demonstrates modern desktop development
 4. **Performance** - Proves lightweight alternatives exist
 
 ### Target Audience
+
 - **Developers** seeking Electron alternatives
 - **Startups** needing fast, lightweight desktop apps
 - **Students** learning modern web + desktop development
@@ -330,12 +372,14 @@ Layouts (Structure)
 ## 🔗 Resources & References
 
 ### Official Documentation
+
 - [Tauri Docs](https://v2.tauri.app/)
 - [Nuxt Docs](https://nuxt.com/)
 - [shadcn-vue Docs](https://www.shadcn-vue.com/)
 - [UnoCSS Docs](https://unocss.dev/)
 
 ### Inspirations
+
 - Original dashboard: [nuxt-shadcn-dashboard](https://github.com/dianprata/nuxt-shadcn-dashboard)
 - Tauri examples: [Tauri Examples](https://github.com/tauri-apps/tauri/tree/dev/examples)
 
@@ -343,4 +387,4 @@ Layouts (Structure)
 
 **Built by Othmane Bakkes** | [GitHub](https://github.com/othmane-ba)
 
-*This project represents a modern approach to desktop application development, combining the best of web and native technologies.*
+_This project represents a modern approach to desktop application development, combining the best of web and native technologies._

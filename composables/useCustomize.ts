@@ -11,7 +11,7 @@ const STORAGE_KEY = 'theme-config'
 export function useCustomize() {
   const { value: color } = useColorMode()
   const isDark = color === 'dark'
-  
+
   // Default config
   const defaultConfig: Config = {
     theme: 'zinc',
@@ -30,28 +30,28 @@ export function useCustomize() {
       try {
         const { load } = await import('@tauri-apps/plugin-store')
         store = await load('settings.json')
-        
+
         // Load saved config from Tauri store
         const savedConfig = await store.get(STORAGE_KEY)
         if (savedConfig) {
           config.value = { ...defaultConfig, ...savedConfig }
         }
-        
-        console.log('Loaded theme config from Tauri store:', config.value)
+
+        console.warn('Loaded theme config from Tauri store:', config.value)
       }
       catch (e) {
         console.error('Error loading Tauri store:', e)
         isTauri.value = false
       }
     }
-    
+
     // Fall back to localStorage for web mode
     if (!isTauri.value) {
       const saved = localStorage.getItem(STORAGE_KEY)
       if (saved) {
         try {
           config.value = { ...defaultConfig, ...JSON.parse(saved) }
-          console.log('Loaded theme config from localStorage:', config.value)
+          console.warn('Loaded theme config from localStorage:', config.value)
         }
         catch (e) {
           console.error('Error parsing saved config:', e)
@@ -66,7 +66,7 @@ export function useCustomize() {
       try {
         await store.set(STORAGE_KEY, config.value)
         await store.save()
-        console.log('Saved theme config to Tauri store:', config.value)
+        console.warn('Saved theme config to Tauri store:', config.value)
       }
       catch (e) {
         console.error('Error saving to Tauri store:', e)
@@ -75,7 +75,7 @@ export function useCustomize() {
     else {
       // Save to localStorage for web mode
       localStorage.setItem(STORAGE_KEY, JSON.stringify(config.value))
-      console.log('Saved theme config to localStorage:', config.value)
+      console.warn('Saved theme config to localStorage:', config.value)
     }
   }
 

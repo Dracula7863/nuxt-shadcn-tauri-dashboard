@@ -148,7 +148,7 @@ const windowActions = [
       <h1 class="text-3xl font-bold tracking-tight">
         Interface Controls
       </h1>
-      <p class="text-muted-foreground mt-2">
+      <p class="mt-2 text-muted-foreground">
         Control window behavior and appearance using Tauri's window API
       </p>
     </div>
@@ -186,7 +186,7 @@ const windowActions = [
       </CardHeader>
       <CardContent>
         <div class="grid gap-4 md:grid-cols-2">
-          <div class="flex items-center justify-between p-3 rounded-lg border">
+          <div class="flex items-center justify-between border rounded-lg p-3">
             <div class="flex items-center gap-2">
               <Icon name="i-lucide-maximize" class="h-4 w-4 text-muted-foreground" />
               <span class="text-sm font-medium">Fullscreen</span>
@@ -195,7 +195,7 @@ const windowActions = [
               {{ isFullscreen ? 'Yes' : 'No' }}
             </Badge>
           </div>
-          <div class="flex items-center justify-between p-3 rounded-lg border">
+          <div class="flex items-center justify-between border rounded-lg p-3">
             <div class="flex items-center gap-2">
               <Icon name="i-lucide-square" class="h-4 w-4 text-muted-foreground" />
               <span class="text-sm font-medium">Maximized</span>
@@ -240,21 +240,23 @@ const windowActions = [
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div class="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+        <div class="grid gap-3 lg:grid-cols-3 md:grid-cols-2">
           <Card
             v-for="item in windowActions"
             :key="item.title"
-            class="cursor-pointer hover:bg-accent transition-colors"
+            class="cursor-pointer transition-colors hover:bg-accent"
             @click="item.action"
           >
             <CardHeader class="pb-3">
               <div class="flex items-start gap-3">
-                <div class="p-2 rounded-lg bg-primary/10">
+                <div class="rounded-lg bg-primary/10 p-2">
                   <Icon :name="item.icon" class="h-5 w-5 text-primary" />
                 </div>
                 <div class="flex-1">
-                  <CardTitle class="text-sm">{{ item.title }}</CardTitle>
-                  <CardDescription class="text-xs mt-1">
+                  <CardTitle class="text-sm">
+                    {{ item.title }}
+                  </CardTitle>
+                  <CardDescription class="mt-1 text-xs">
                     {{ item.description }}
                   </CardDescription>
                 </div>
@@ -271,13 +273,13 @@ const windowActions = [
       </CardHeader>
       <CardContent class="space-y-2">
         <div class="flex items-start gap-2">
-          <Icon name="i-lucide-info" class="h-5 w-5 text-muted-foreground mt-0.5" />
+          <Icon name="i-lucide-info" class="mt-0.5 h-5 w-5 text-muted-foreground" />
           <div class="text-sm text-muted-foreground">
             <p>These controls use Tauri's window management API to interact with the native window.</p>
           </div>
         </div>
         <div class="flex items-start gap-2">
-          <Icon name="i-lucide-monitor" class="h-5 w-5 text-muted-foreground mt-0.5" />
+          <Icon name="i-lucide-monitor" class="mt-0.5 h-5 w-5 text-muted-foreground" />
           <div class="text-sm text-muted-foreground">
             <p>All actions are performed natively for better performance and integration with the OS.</p>
           </div>

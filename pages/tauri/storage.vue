@@ -36,7 +36,7 @@ async function loadItems() {
   try {
     const store = await storeModule.load('store.json')
     const entries = await store.entries()
-    
+
     storageItems.value = entries.map(([key, value]: [string, any]) => ({
       key: String(key),
       value: typeof value === 'string' ? value : JSON.stringify(value),
@@ -54,12 +54,12 @@ async function addItem() {
 
   isAddingItem.value = true
   error.value = null
-  
+
   try {
     const store = await storeModule.load('store.json')
     await store.set(newKey.value, newValue.value)
     await store.save()
-    
+
     await loadItems()
     newKey.value = ''
     newValue.value = ''
@@ -112,7 +112,7 @@ async function clearAll() {
       <h1 class="text-3xl font-bold tracking-tight">
         Storage
       </h1>
-      <p class="text-muted-foreground mt-2">
+      <p class="mt-2 text-muted-foreground">
         Persistent key-value storage using Tauri Store plugin
       </p>
     </div>
@@ -196,7 +196,7 @@ async function clearAll() {
         </div>
 
         <div v-else-if="storageItems.length === 0" class="flex flex-col items-center justify-center py-8 text-center">
-          <Icon name="i-lucide-database" class="h-12 w-12 text-muted-foreground mb-4" />
+          <Icon name="i-lucide-database" class="mb-4 h-12 w-12 text-muted-foreground" />
           <p class="text-sm text-muted-foreground">
             No items in storage. Add your first item above.
           </p>
@@ -214,10 +214,10 @@ async function clearAll() {
           </TableHeader>
           <TableBody>
             <TableRow v-for="item in storageItems" :key="item.key">
-              <TableCell class="font-mono text-sm">
+              <TableCell class="text-sm font-mono">
                 {{ item.key }}
               </TableCell>
-              <TableCell class="font-mono text-sm">
+              <TableCell class="text-sm font-mono">
                 {{ item.value }}
               </TableCell>
               <TableCell class="text-right">

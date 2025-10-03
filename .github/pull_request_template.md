@@ -1,7 +1,9 @@
 ## Description
+
 <!-- Provide a brief description of the changes in this PR -->
 
 ## Type of Change
+
 <!-- Mark the relevant option with an "x" -->
 
 - [ ] Bug fix (non-breaking change which fixes an issue)
@@ -13,33 +15,41 @@
 - [ ] UI/UX enhancement
 
 ## Related Issue
+
 <!-- Link to the issue this PR addresses -->
+
 Fixes #(issue number)
 
 ## Changes Made
+
 <!-- List the specific changes made in this PR -->
 
-- 
-- 
-- 
+-
+-
+-
 
 ## Testing
+
 <!-- Describe the tests you ran and how to reproduce them -->
 
 ### Tested On
+
 - [ ] Web mode (`pnpm dev`)
 - [ ] Tauri development (`pnpm tauri:dev`)
 - [ ] Tauri production build (`pnpm tauri:build`)
 
 ### Operating Systems
+
 - [ ] Windows
 - [ ] macOS
 - [ ] Linux
 
 ## Screenshots
+
 <!-- If applicable, add screenshots to demonstrate the changes -->
 
 ## Checklist
+
 <!-- Mark completed items with an "x" -->
 
 - [ ] My code follows the project's code style
@@ -53,4 +63,5 @@ Fixes #(issue number)
 - [ ] I have added necessary Tauri permissions (if applicable)
 
 ## Additional Notes
+
 <!-- Add any additional context or notes for reviewers -->

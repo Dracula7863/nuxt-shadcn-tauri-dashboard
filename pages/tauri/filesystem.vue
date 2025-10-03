@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { readTextFile, writeTextFile } from '@tauri-apps/plugin-fs'
 import { open, save } from '@tauri-apps/plugin-dialog'
+import { readTextFile, writeTextFile } from '@tauri-apps/plugin-fs'
 
 definePageMeta({
   title: 'Filesystem',
@@ -86,7 +86,7 @@ function newFile() {
       <h1 class="text-3xl font-bold tracking-tight">
         Filesystem
       </h1>
-      <p class="text-muted-foreground mt-2">
+      <p class="mt-2 text-muted-foreground">
         Read and write files using Tauri's filesystem API
       </p>
     </div>
@@ -118,22 +118,22 @@ function newFile() {
       <CardHeader>
         <CardTitle>File Operations</CardTitle>
         <CardDescription>
-          <span v-if="currentFilePath" class="font-mono text-xs">{{ currentFilePath }}</span>
+          <span v-if="currentFilePath" class="text-xs font-mono">{{ currentFilePath }}</span>
           <span v-else>No file selected</span>
         </CardDescription>
       </CardHeader>
       <CardContent class="space-y-4">
         <div class="flex gap-2">
-          <Button @click="newFile" variant="outline">
+          <Button variant="outline" @click="newFile">
             <Icon name="i-lucide-file-plus" class="mr-2 h-4 w-4" />
             New
           </Button>
-          <Button @click="openFile" :disabled="loading">
+          <Button :disabled="loading" @click="openFile">
             <Icon v-if="loading" name="i-lucide-loader-2" class="mr-2 h-4 w-4 animate-spin" />
             <Icon v-else name="i-lucide-folder-open" class="mr-2 h-4 w-4" />
             Open
           </Button>
-          <Button @click="saveFile" :disabled="loading || !fileContent">
+          <Button :disabled="loading || !fileContent" @click="saveFile">
             <Icon v-if="loading" name="i-lucide-loader-2" class="mr-2 h-4 w-4 animate-spin" />
             <Icon v-else name="i-lucide-save" class="mr-2 h-4 w-4" />
             Save
@@ -146,7 +146,7 @@ function newFile() {
             id="content"
             v-model="fileContent"
             placeholder="Type something or open a file..."
-            class="min-h-[400px] font-mono text-sm"
+            class="min-h-[400px] text-sm font-mono"
           />
           <p class="text-xs text-muted-foreground">
             {{ fileContent.length }} characters
@@ -161,13 +161,13 @@ function newFile() {
       </CardHeader>
       <CardContent class="space-y-2">
         <div class="flex items-start gap-2">
-          <Icon name="i-lucide-shield-check" class="h-5 w-5 text-muted-foreground mt-0.5" />
+          <Icon name="i-lucide-shield-check" class="mt-0.5 h-5 w-5 text-muted-foreground" />
           <div class="text-sm text-muted-foreground">
             <p>File operations are sandboxed and require user permission through system dialogs.</p>
           </div>
         </div>
         <div class="flex items-start gap-2">
-          <Icon name="i-lucide-file-text" class="h-5 w-5 text-muted-foreground mt-0.5" />
+          <Icon name="i-lucide-file-text" class="mt-0.5 h-5 w-5 text-muted-foreground" />
           <div class="text-sm text-muted-foreground">
             <p>Supported file types: .txt, .md, .json, .js, .ts, .vue, .html, .css</p>
           </div>

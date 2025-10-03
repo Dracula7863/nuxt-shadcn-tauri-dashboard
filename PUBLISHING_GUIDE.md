@@ -3,6 +3,7 @@
 ## ✅ Pre-Publish Checklist
 
 ### 1. Code Quality Checks
+
 - [x] All builds successful (`pnpm generate` ✓)
 - [x] Tauri build completed (`pnpm tauri:build` ✓)
 - [x] No TypeScript errors
@@ -11,6 +12,7 @@
 - [x] Fullscreen toggle working in Tauri mode
 
 ### 2. Documentation Complete
+
 - [x] README.md - Comprehensive project overview
 - [x] CONTRIBUTING.md - Contribution guidelines
 - [x] PROJECT_OVERVIEW.md - Technical deep dive
@@ -22,12 +24,14 @@
 - [x] .nuxtignore - Component conflicts resolved
 
 ### 3. Configuration Files
+
 - [x] package.json - Updated with author info
 - [x] nuxt.config.ts - Tauri-compatible settings
 - [x] tauri.conf.json - App configuration
 - [x] GitHub templates (issues, PRs)
 
 ### 4. Final Touches
+
 - [ ] Add screenshots to `docs/screenshots/` (optional but recommended)
 - [ ] Update social card image `public/social-card.png` (optional)
 - [ ] Test app one final time with `pnpm tauri:dev`
@@ -139,9 +143,11 @@ If you encounter authentication issues, GitHub may ask you to authenticate via b
 Once pushed, go to your repository on GitHub:
 
 #### A. Add Topics/Tags
+
 Click the ⚙️ (gear icon) next to "About" on the right sidebar, then add:
 
 **Topics**:
+
 ```
 nuxt nuxt4 tauri vue vue3 typescript desktop-app cross-platform
 shadcn-vue unocss dashboard admin-dashboard electron-alternative
@@ -149,6 +155,7 @@ rust webview native-app windows macos linux
 ```
 
 #### B. Update Repository Details
+
 - **Website**: (Optional) Add demo link if you deploy it
 - **Description**: Should already be set, verify it shows:
   ```
@@ -156,11 +163,13 @@ rust webview native-app windows macos linux
   ```
 
 #### C. Enable Discussions (Optional)
+
 - Go to Settings → General → Features
 - ✅ Check "Discussions"
 - This allows community Q&A and feedback
 
 #### D. Add Repository Social Image (Optional)
+
 - Go to Settings → General → Social preview
 - Upload `public/social-card.png` or create a custom image (1280x640px recommended)
 
@@ -190,6 +199,7 @@ git push origin v1.0.0
 ```
 
 Then on GitHub:
+
 1. Go to **Releases** → **Draft a new release**
 2. Choose tag: `v1.0.0`
 3. Release title: `v1.0.0 - Initial Release 🎉`
@@ -241,6 +251,7 @@ See [README.md](https://github.com/othmane-ba/nuxt-shadcn-tauri-dashboard#instal
 Built by [@othmane-ba](https://github.com/othmane-ba)
 
 Based on [nuxt-shadcn-dashboard](https://github.com/dianprata/nuxt-shadcn-dashboard) by @dianprata
+
 ```
 
 5. If you have built binaries (from `pnpm tauri:build`), attach them:
@@ -262,6 +273,7 @@ At the top of your README, you can add status badges:
 ![GitHub license](https://img.shields.io/github/license/othmane-ba/nuxt-shadcn-tauri-dashboard)
 ![Nuxt version](https://img.shields.io/badge/Nuxt-4.1.2-00DC82?logo=nuxt.js)
 ![Tauri version](https://img.shields.io/badge/Tauri-2.2.0-FFC131?logo=tauri)
+
 ```
 
 ---
@@ -271,6 +283,7 @@ At the top of your README, you can add status badges:
 ### 1. Share Your Project
 
 **Twitter/X**:
+
 ```
 🚀 Just launched my new open-source project!
 
@@ -286,6 +299,7 @@ Check it out: https://github.com/othmane-ba/nuxt-shadcn-tauri-dashboard
 ```
 
 **LinkedIn**:
+
 ```
 Excited to share my latest open-source project! 🎉
 
@@ -310,8 +324,9 @@ The project demonstrates how modern web technologies can create performant deskt
 ```
 
 **Reddit**:
+
 - r/vuejs
-- r/Nuxt  
+- r/Nuxt
 - r/rust
 - r/opensource
 - r/webdev

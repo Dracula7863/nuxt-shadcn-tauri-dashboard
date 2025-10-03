@@ -11,12 +11,14 @@ A modern, cross-platform desktop dashboard application built with **Nuxt 4**, **
 ## ✨ Features
 
 ### 🎨 Modern UI Components
+
 - Built with **shadcn-vue** - Beautiful, accessible component library
 - **UnoCSS** for instant, on-demand atomic CSS
 - **Dark mode** support with theme customization
 - Responsive design optimized for desktop
 
 ### 🖥️ Desktop Integration with Tauri
+
 - **System Information** - Display OS platform, architecture, version, and hostname
 - **Persistent Storage** - Key-value store with CRUD operations
 - **File System** - Read and write text files with native dialogs
@@ -25,6 +27,7 @@ A modern, cross-platform desktop dashboard application built with **Nuxt 4**, **
 - **Cross-platform** - Build for Windows, macOS, and Linux
 
 ### 📊 Dashboard Pages
+
 - Overview dashboard with charts and statistics
 - Email client interface
 - Task management system
@@ -43,6 +46,7 @@ A modern, cross-platform desktop dashboard application built with **Nuxt 4**, **
 ## 📦 Installation
 
 ### Prerequisites
+
 - **Node.js** (v18 or higher)
 - **pnpm** (recommended) or npm
 - **Rust** (for Tauri) - [Install Rust](https://www.rust-lang.org/tools/install)
@@ -127,61 +131,78 @@ pnpm tauri:icon path/to/your/icon.png
 ### Tauri Pages
 
 #### System Information (`/tauri/system`)
+
 Displays comprehensive system information using `@tauri-apps/plugin-os`:
+
 - Platform (Windows, macOS, Linux)
 - Architecture (x64, ARM, etc.)
 - OS Type and Version
 - Hostname
 
 #### Storage (`/tauri/storage`)
+
 Persistent key-value storage with `@tauri-apps/plugin-store`:
+
 - Add, view, and delete items
 - JSON-based storage
 - Automatic persistence
 
 #### File System (`/tauri/filesystem`)
+
 File operations with native dialogs using `@tauri-apps/plugin-fs`:
+
 - Open and read text files (.txt, .md, .json, .js, .ts, .vue)
 - Save and write files
 - Native file picker dialogs
 
 #### Notifications (`/tauri/notifications`)
+
 System notification integration:
+
 - Permission request flow
 - Pre-configured notification templates
 - Native OS notifications
 
 #### Interface (`/tauri/interface`)
+
 Window management controls:
+
 - Toggle fullscreen
 - Maximize/minimize windows
 - Center window on screen
 - Window state tracking
 
 ### Window Controls
+
 The header component includes a fullscreen toggle button (only visible in Tauri desktop mode) that allows quick fullscreen switching.
 
 ## ⚙️ Configuration
 
 ### Tauri Configuration
+
 Edit `src-tauri/tauri.conf.json` to customize:
+
 - App name and version
 - Window size and properties
 - Build settings
 - Bundle configuration
 
 ### Permissions
+
 Tauri uses a security model with explicit permissions. Edit `src-tauri/capabilities/default.json` to modify API access.
 
 ## 🎨 Customization
 
 ### Theme
+
 Customize colors and appearance in:
+
 - `app.config.ts` - App-level settings
 - `uno.config.ts` - UnoCSS theme configuration
 - Components use CSS variables for theming
 
 ### Menus
+
 Edit `constants/menus.ts` to modify sidebar navigation.
 
 ## 🤝 Contributing
@@ -201,6 +222,7 @@ MIT License - feel free to use this project for personal or commercial purposes.
 ## 👤 Author
 
 **Othmane Bakkes**
+
 - GitHub: [@othmane-ba](https://github.com/othmane-ba)
 
 ## 🙏 Credits
@@ -215,31 +237,41 @@ MIT License - feel free to use this project for personal or commercial purposes.
 ## 📸 Screenshots
 
 ### Dashboard Overview
+
 ![Dashboard](screenshots/2.png)
 
 ### Login Overview
+
 ![Login](screenshots/3.png)
 
 ### Tauri System Information
+
 ![System Info](screenshots/4.png)
 
 ### Storage Management
+
 ![Storage](screenshots/5.png)
 
 ### Filesystem
+
 ![Storage](screenshots/6.png)
 
 ### Notifications
+
 ![Storage](screenshots/7.png)
 
 ### Interface Controls
+
 ![Interface](screenshots/8.png)
 
 ### Settings & Configuration
+
 ![Settings](screenshots/9.png)
 
 ### Additional Pages
+
 The application also includes:
+
 - **Tasks Management** - Complete task tracking system with status management
 - **Email Client** - Modern email interface with sidebar navigation
 - **Component Gallery** - Showcase of all available shadcn-vue components

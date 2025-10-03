@@ -110,7 +110,7 @@ function useExample(example: typeof notificationExamples[0]) {
       <h1 class="text-3xl font-bold tracking-tight">
         Notifications
       </h1>
-      <p class="text-muted-foreground mt-2">
+      <p class="mt-2 text-muted-foreground">
         Send system notifications using Tauri's notification plugin
       </p>
     </div>
@@ -158,8 +158,8 @@ function useExample(example: typeof notificationExamples[0]) {
           </div>
           <Button
             v-if="!permissionGranted"
-            @click="requestNotificationPermission"
             :disabled="loading"
+            @click="requestNotificationPermission"
           >
             <Icon v-if="loading" name="i-lucide-loader-2" class="mr-2 h-4 w-4 animate-spin" />
             Request Permission
@@ -219,17 +219,19 @@ function useExample(example: typeof notificationExamples[0]) {
           <Card
             v-for="example in notificationExamples"
             :key="example.title"
-            class="cursor-pointer hover:bg-accent transition-colors"
+            class="cursor-pointer transition-colors hover:bg-accent"
             @click="useExample(example)"
           >
             <CardHeader class="pb-3">
               <div class="flex items-start gap-3">
-                <div class="p-2 rounded-lg bg-primary/10">
+                <div class="rounded-lg bg-primary/10 p-2">
                   <Icon :name="example.icon" class="h-5 w-5 text-primary" />
                 </div>
                 <div class="flex-1">
-                  <CardTitle class="text-base">{{ example.title }}</CardTitle>
-                  <CardDescription class="text-sm mt-1">
+                  <CardTitle class="text-base">
+                    {{ example.title }}
+                  </CardTitle>
+                  <CardDescription class="mt-1 text-sm">
                     {{ example.body }}
                   </CardDescription>
                 </div>

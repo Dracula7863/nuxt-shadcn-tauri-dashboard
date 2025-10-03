@@ -53,7 +53,7 @@ const systemData = computed(() => [
       <h1 class="text-3xl font-bold tracking-tight">
         System Information
       </h1>
-      <p class="text-muted-foreground mt-2">
+      <p class="mt-2 text-muted-foreground">
         View detailed information about your system using Tauri APIs
       </p>
     </div>
@@ -65,9 +65,9 @@ const systemData = computed(() => [
       ]"
     />
 
-    <div v-if="loading" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <div v-if="loading" class="grid gap-4 lg:grid-cols-3 md:grid-cols-2">
       <Card v-for="i in 6" :key="i">
-        <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardHeader class="flex flex-row items-center justify-between pb-2 space-y-0">
           <Skeleton class="h-4 w-24" />
         </CardHeader>
         <CardContent>
@@ -84,9 +84,9 @@ const systemData = computed(() => [
       </AlertDescription>
     </Alert>
 
-    <div v-else class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <div v-else class="grid gap-4 lg:grid-cols-3 md:grid-cols-2">
       <Card v-for="item in systemData" :key="item.label">
-        <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardHeader class="flex flex-row items-center justify-between pb-2 space-y-0">
           <CardTitle class="text-sm font-medium">
             {{ item.label }}
           </CardTitle>
@@ -109,13 +109,13 @@ const systemData = computed(() => [
       </CardHeader>
       <CardContent class="space-y-2">
         <div class="flex items-start gap-2">
-          <Icon name="i-lucide-info" class="h-5 w-5 text-muted-foreground mt-0.5" />
+          <Icon name="i-lucide-info" class="mt-0.5 h-5 w-5 text-muted-foreground" />
           <div class="text-sm text-muted-foreground">
-            <p>The system information is retrieved using Tauri's <code class="px-1 py-0.5 rounded bg-muted">@tauri-apps/plugin-os</code> plugin.</p>
+            <p>The system information is retrieved using Tauri's <code class="rounded bg-muted px-1 py-0.5">@tauri-apps/plugin-os</code> plugin.</p>
           </div>
         </div>
         <div class="flex items-start gap-2">
-          <Icon name="i-lucide-shield-check" class="h-5 w-5 text-muted-foreground mt-0.5" />
+          <Icon name="i-lucide-shield-check" class="mt-0.5 h-5 w-5 text-muted-foreground" />
           <div class="text-sm text-muted-foreground">
             <p>All information is gathered locally without any external API calls for maximum privacy and performance.</p>
           </div>

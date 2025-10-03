@@ -5,6 +5,11 @@ export default withNuxt(antfu(
   {
     unocss: true,
     formatters: true,
+    ignores: [
+      // Ignore files with circular fix issues
+      'GITHUB_SETUP.md',
+      'PUBLISHING_GUIDE.md',
+    ],
   },
   {
     rules: {

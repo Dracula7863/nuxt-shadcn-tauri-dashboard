@@ -42,20 +42,20 @@ watch(() => route.fullPath, (val) => {
 onMounted(async () => {
   // Check if running in Tauri - try multiple detection methods
   const hasTauri = !!(window as any).__TAURI__ || !!(window as any).__TAURI_INTERNALS__
-  console.log('Checking Tauri environment:', {
+  console.warn('Checking Tauri environment:', {
     __TAURI__: (window as any).__TAURI__,
     __TAURI_INTERNALS__: (window as any).__TAURI_INTERNALS__,
     detected: hasTauri,
   })
 
   if (hasTauri) {
-    console.log('Tauri detected, initializing window controls')
+    console.warn('Tauri detected, initializing window controls')
     try {
       const { getCurrentWindow } = await import('@tauri-apps/api/window')
       appWindow = getCurrentWindow()
       isFullscreen.value = await appWindow.isFullscreen()
       isTauri.value = true // Set this AFTER successful initialization
-      console.log('Tauri window initialized. Fullscreen state:', isFullscreen.value, 'isTauri:', isTauri.value)
+      console.warn('Tauri window initialized. Fullscreen state:', isFullscreen.value, 'isTauri:', isTauri.value)
     }
     catch (e) {
       console.error('Error initializing Tauri window:', e)
@@ -63,7 +63,7 @@ onMounted(async () => {
     }
   }
   else {
-    console.log('Not running in Tauri mode - window.__TAURI__ not found')
+    console.warn('Not running in Tauri mode - window.__TAURI__ not found')
   }
 })
 
@@ -93,8 +93,8 @@ async function toggleFullscreen() {
         v-if="isTauri"
         variant="ghost"
         size="icon"
-        @click="toggleFullscreen"
         title="Toggle Fullscreen"
+        @click="toggleFullscreen"
       >
         <Icon v-if="isFullscreen" name="i-lucide-minimize" class="h-5 w-5" />
         <Icon v-else name="i-lucide-maximize" class="h-5 w-5" />
