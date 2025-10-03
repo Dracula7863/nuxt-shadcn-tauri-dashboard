@@ -1,0 +1,6 @@
+# Tauri directory
+src-tauri
+
+# Ignore shadcn-vue index.ts files from component auto-import
+# These files only re-export components and cause build errors
+components/ui/**/index.ts

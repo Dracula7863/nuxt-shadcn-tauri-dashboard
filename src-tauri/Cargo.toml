@@ -1,0 +1,28 @@
+[package]
+name = "nuxt-shadcn-dashboard"
+version = "0.2.6"
+description = "Shadcn Dashboard built with Nuxt"
+authors = ["Dian Pratama <dianpratama2@gmail.com>"]
+license = "MIT"
+repository = "https://github.com/dianprata/nuxt-shadcn-dashboard"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[build-dependencies]
+tauri-build = { version = "2.0.3", features = [] }
+
+[dependencies]
+tauri = { version = "2.2.0", features = ["protocol-asset"] }
+tauri-plugin-shell = "2.0.2"
+tauri-plugin-dialog = "2.0.1"
+tauri-plugin-fs = "2.0.1"
+tauri-plugin-notification = "2.0.1"
+tauri-plugin-os = "2.0.1"
+tauri-plugin-store = "2.1.0"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[features]
+# This feature is used for production builds or when a dev server is not specified, DO NOT REMOVE!!
+custom-protocol = ["tauri/custom-protocol"]

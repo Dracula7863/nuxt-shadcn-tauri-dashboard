@@ -1,0 +1,3 @@
+# Icon files will be generated here
+# Run: pnpm tauri icon path/to/your/icon.png
+# This will generate all required icon sizes for different platforms
