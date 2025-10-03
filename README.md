@@ -214,7 +214,37 @@ MIT License - feel free to use this project for personal or commercial purposes.
 
 ## 📸 Screenshots
 
-*Add screenshots of your application here*
+### Dashboard Overview
+![Dashboard](screenshots/2.png)
+
+### Login Overview
+![Login](screenshots/3.png)
+
+### Tauri System Information
+![System Info](screenshots/4.png)
+
+### Storage Management
+![Storage](screenshots/5.png)
+
+### Filesystem
+![Storage](screenshots/6.png)
+
+### Notifications
+![Storage](screenshots/7.png)
+
+### Interface Controls
+![Interface](screenshots/8.png)
+
+### Settings & Configuration
+![Settings](screenshots/9.png)
+
+### Additional Pages
+The application also includes:
+- **Tasks Management** - Complete task tracking system with status management
+- **Email Client** - Modern email interface with sidebar navigation
+- **Component Gallery** - Showcase of all available shadcn-vue components
+- **Authentication Pages** - Login, register, and password reset flows
+- **Error Pages** - Custom 404, 401, 403, 500, and 503 error pages
 
 ## 🗺️ Roadmap
 
